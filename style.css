@@ -1,34 +1,34 @@
+/* ===== 색상 변수 (차분한 팔레트) ===== */
 :root {
   color-scheme: light;
-  --bg: #00ffcc;
-  --surface: #fff200;
-  --surface-strong: #ff8ad8;
-  --ink: #20004f;
-  --muted: #003d82;
-  --line: #111111;
-  --primary: #ff00aa;
-  --primary-dark: #00a000;
-  --teal: #001eff;
-  --amber: #ff5a00;
-  --danger: #ff0000;
-  --shadow: 12px 12px 0 #ff00aa, 20px 20px 0 #00aaff;
+  --bg: #f0f4f8;
+  --surface: #ffffff;
+  --surface-strong: #e8edf2;
+  --ink: #1a2332;
+  --muted: #5a6a7e;
+  --line: #d0d7e0;
+  --primary: #4a6cf7;
+  --primary-dark: #3451c7;
+  --teal: #0ea5a0;
+  --amber: #e8930c;
+  --danger: #dc3545;
+  --shadow: 0 4px 24px rgba(74, 108, 247, 0.10);
 }
 
+/* ===== 기본 리셋 ===== */
 * {
   box-sizing: border-box;
 }
 
+/* ===== 페이지 바탕 (깔끔한 그라데이션) ===== */
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    repeating-linear-gradient(45deg, rgba(255, 0, 170, 0.28) 0 14px, transparent 14px 28px),
-    radial-gradient(circle at 15% 12%, #fff200 0 70px, transparent 72px),
-    radial-gradient(circle at 86% 20%, #ff5a00 0 95px, transparent 97px),
-    linear-gradient(120deg, #00ffcc 0%, #b9ff00 38%, #f8c4ff 39%, #a7fffb 100%);
+  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
   color: var(--ink);
-  font-family: "Comic Sans MS", "Impact", "Malgun Gothic", cursive, sans-serif;
-  letter-spacing: 0;
+  font-family: "Pretendard", "Malgun Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
 }
 
 button,
@@ -40,6 +40,7 @@ button {
   cursor: pointer;
 }
 
+/* ===== 상단바 ===== */
 .topbar {
   display: flex;
   align-items: center;
@@ -47,52 +48,58 @@ button {
   gap: 20px;
   width: min(1120px, calc(100% - 32px));
   margin: 18px auto 20px;
-  padding: 18px 22px;
-  border: 6px ridge #111111;
-  border-radius: 2px 22px 4px 18px;
-  background:
-    linear-gradient(90deg, #fff200, #ff00aa 31%, #00ff00 62%, #00aaff);
-  box-shadow: 9px 9px 0 #111111;
+  padding: 18px 24px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #4a6cf7 0%, #6366f1 50%, #7c3aed 100%);
+  box-shadow: 0 4px 20px rgba(74, 108, 247, 0.25);
 }
 
+/* ===== 제목 공통 초기화 ===== */
 .topbar h1,
 .login-panel h2,
 .intro-panel h2,
 .view-title h2 {
   margin: 0;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
 }
 
+/* ===== 상단바 제목 ===== */
 .topbar h1 {
   color: #ffffff;
-  font-size: clamp(28px, 4vw, 46px);
-  text-shadow: 3px 3px 0 #ff0000, 6px 6px 0 #0000ff;
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: 700;
+  text-shadow: none;
 }
 
+/* 느낌표 제거 */
 .topbar h1::after {
-  content: " !!!";
-  color: #fff200;
+  content: "";
 }
 
+/* ===== 소제목 뱃지 (eyebrow) ===== */
 .eyebrow {
   display: inline-block;
   margin: 0 0 10px;
-  padding: 3px 9px;
-  border: 3px dotted #111111;
-  background: #00ff00;
-  color: #d10000;
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(74, 108, 247, 0.10);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  transform: rotate(-1.5deg);
+  transform: none;
 }
 
+/* ===== 앱 쉘 (메인 컨테이너) ===== */
 .app-shell {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto 54px;
 }
 
+/* ===== 로그인 레이아웃 (2단 그리드) ===== */
 .login-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 420px);
@@ -100,16 +107,18 @@ button {
   align-items: stretch;
 }
 
+/* ===== 카드 공통 스타일 ===== */
 .intro-panel,
 .login-panel,
 .student-card,
 .student-profile {
-  border: 5px solid var(--line);
-  border-radius: 3px 18px 6px 28px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
   background: var(--surface);
   box-shadow: var(--shadow);
 }
 
+/* ===== 소개 패널 (왼쪽) ===== */
 .intro-panel {
   position: relative;
   min-height: 390px;
@@ -119,234 +128,253 @@ button {
   overflow: hidden;
   padding: 36px;
   background:
-    linear-gradient(135deg, rgba(0, 30, 255, 0.45), transparent 32%),
-    repeating-linear-gradient(90deg, #fff200 0 28px, #ffb000 28px 42px, #f7ff72 42px 58px);
+    linear-gradient(135deg, rgba(74, 108, 247, 0.08) 0%, transparent 50%),
+    #ffffff;
 }
 
+/* HOT 뱃지 제거 */
 .intro-panel::before {
-  content: "HOT";
-  position: absolute;
-  top: 22px;
-  right: 24px;
-  width: 104px;
-  height: 104px;
-  display: grid;
-  place-items: center;
-  border: 5px dashed #111111;
-  border-radius: 50%;
-  background: #ff00aa;
-  color: #ffffff;
-  font-family: Impact, "Malgun Gothic", sans-serif;
-  font-size: 34px;
-  transform: rotate(14deg);
-  text-shadow: 2px 2px 0 #0000ff;
+  content: "";
+  display: none;
 }
 
+/* ===== 소개 패널 제목 ===== */
 .intro-panel h2 {
   max-width: 720px;
-  color: #001eff;
-  font-size: clamp(32px, 5vw, 60px);
-  line-height: 1.04;
-  text-decoration: underline wavy #ff00aa 4px;
-  text-shadow: 2px 2px 0 #ffffff, 5px 5px 0 #00ff00;
+  color: var(--ink);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  text-shadow: none;
 }
 
+/* ===== 소개 패널 설명 문구 ===== */
 .intro-panel p:not(.eyebrow) {
   max-width: 620px;
-  margin: 22px 0 0;
-  border: 3px double #ff0000;
-  background: #ffffff;
-  color: #5b008e;
-  font-size: 18px;
-  font-weight: 800;
+  margin: 16px 0 0;
+  border: none;
+  border-left: 3px solid var(--primary);
+  background: transparent;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 400;
   line-height: 1.7;
-  padding: 14px;
+  padding: 0 0 0 14px;
 }
 
+/* ===== 로그인 패널 (오른쪽) ===== */
 .login-panel {
   display: grid;
   align-content: start;
-  gap: 13px;
-  padding: 28px;
-  background:
-    linear-gradient(180deg, #f8c4ff, #ffffff 41%, #c6ff00 42%, #ffffff);
-  transform: rotate(0.7deg);
+  gap: 14px;
+  padding: 32px;
+  background: #ffffff;
+  transform: none;
 }
 
 .login-panel h2 {
-  color: #ff0000;
-  font-size: 34px;
-  text-shadow: 2px 2px 0 #fff200;
+  color: var(--ink);
+  font-size: 26px;
+  font-weight: 700;
+  text-shadow: none;
 }
 
+/* ===== 입력 필드 라벨 ===== */
 .login-panel label {
   width: max-content;
-  padding: 2px 8px;
-  border-left: 8px solid #001eff;
-  background: #ff8ad8;
-  color: #111111;
-  font-weight: 900;
+  padding: 2px 0;
+  border-left: 3px solid var(--primary);
+  background: transparent;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 14px;
+  padding-left: 8px;
 }
 
+/* ===== 입력 필드 ===== */
 .login-panel input {
   width: 100%;
   height: 48px;
-  border: 4px inset #808080;
-  border-radius: 0;
-  background: #eaffff;
-  color: #111111;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f8fafc;
+  color: var(--ink);
   outline: none;
   padding: 0 14px;
-  font-weight: 800;
+  font-weight: 400;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .login-panel input:focus {
-  border-color: #ff00aa;
-  box-shadow: 0 0 0 5px #fff200, 0 0 0 9px #001eff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.15);
 }
 
+/* ===== 로그인 에러 메시지 ===== */
 .form-message {
   min-height: 24px;
   margin: 4px 0 0;
   color: var(--danger);
-  font-weight: 900;
-  text-shadow: 1px 1px 0 #fff200;
+  font-weight: 500;
+  font-size: 14px;
+  text-shadow: none;
 }
 
+/* ===== 버튼 공통 ===== */
 .primary-button,
 .ghost-button,
 .text-button {
   min-height: 44px;
-  border-radius: 2px 14px 2px 14px;
-  border: 4px outset #ffffff;
-  padding: 0 18px;
-  font-weight: 900;
-  text-transform: uppercase;
+  border-radius: 10px;
+  border: none;
+  padding: 0 20px;
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: none;
+  transition: background 0.2s, transform 0.1s;
 }
 
+/* ===== 메인 버튼 ===== */
 .primary-button {
-  background: linear-gradient(90deg, #00ff00, #fff200, #ff00aa);
-  color: #111111;
-  box-shadow: 5px 5px 0 #001eff;
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(74, 108, 247, 0.3);
 }
 
 .primary-button:hover {
-  background: linear-gradient(90deg, #ff00aa, #00aaff, #fff200);
+  background: var(--primary-dark);
+  transform: translateY(-1px);
 }
 
+/* ===== 보조 버튼 (로그아웃 등) ===== */
 .ghost-button,
 .text-button {
-  background: #ff8ad8;
-  color: #001eff;
-  border-color: #111111;
-  box-shadow: 4px 4px 0 #fff200;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: none;
 }
 
 .ghost-button:hover,
 .text-button:hover {
-  background: #00ff00;
-  color: #ff0000;
+  background: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
 }
 
+/* ===== 뷰 헤더 (학생/관리자 페이지 상단) ===== */
 .view-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 22px;
-  padding: 14px 18px;
-  border: 5px dashed #ff00aa;
-  background: #fff200;
-  box-shadow: 7px 7px 0 #001eff;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: var(--shadow);
 }
 
 .view-title h2 {
-  color: #ff0000;
-  font-size: clamp(26px, 4vw, 44px);
-  text-shadow: 2px 2px 0 #ffffff, 4px 4px 0 #00ff00;
+  color: var(--ink);
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight: 700;
+  text-shadow: none;
 }
 
 .view-title p {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: var(--muted);
-  font-weight: 900;
+  font-weight: 400;
+  font-size: 14px;
 }
 
+/* ===== 학생 상세 레이아웃 (2단) ===== */
 .student-layout {
   display: grid;
   grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
   gap: 28px;
 }
 
+/* ===== 학생 프로필 카드 ===== */
 .student-profile {
   overflow: hidden;
-  background: #f8c4ff;
-  transform: rotate(-0.6deg);
+  background: #ffffff;
+  transform: none;
 }
 
+/* ===== 학생 사진 ===== */
 .student-photo {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
-  border-bottom: 6px groove #ff5a00;
+  border-bottom: 1px solid var(--line);
   background: var(--surface-strong);
-  filter: saturate(1.6) contrast(1.08);
+  filter: none;
 }
 
+/* ===== 프로필 본문 ===== */
 .profile-body {
   padding: 22px;
-  background:
-    repeating-linear-gradient(0deg, #ffffff 0 13px, #eaffff 13px 26px);
+  background: #ffffff;
 }
 
 .profile-body h3 {
   margin: 0;
-  color: #001eff;
-  font-size: 31px;
-  text-shadow: 2px 2px 0 #fff200;
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 700;
+  text-shadow: none;
 }
 
+/* ===== 학번 표시 ===== */
 .student-number {
   width: max-content;
-  margin: 8px 0 0;
-  padding: 4px 10px;
-  background: #00ff00;
-  color: #d10000;
-  font-weight: 900;
+  margin: 6px 0 0;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: rgba(74, 108, 247, 0.10);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 13px;
 }
 
+/* ===== 태그 줄 (키워드) ===== */
 .tag-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
+  gap: 8px;
+  margin-top: 16px;
 }
 
 .tag {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
-  border: 3px solid #111111;
-  border-radius: 0 14px 0 14px;
+  min-height: 30px;
+  border: none;
+  border-radius: 8px;
   padding: 0 12px;
-  background: #fff200;
-  color: #001eff;
+  background: rgba(74, 108, 247, 0.10);
+  color: var(--primary);
   font-size: 13px;
-  font-weight: 900;
-  box-shadow: 3px 3px 0 #ff00aa;
+  font-weight: 600;
+  box-shadow: none;
 }
 
 .tag:nth-child(even) {
-  background: #00aaff;
-  color: #ffffff;
+  background: rgba(14, 165, 160, 0.10);
+  color: var(--teal);
 }
 
+/* ===== 컨텐츠 묶음 ===== */
 .content-stack {
   display: grid;
   gap: 22px;
 }
 
+/* ===== 섹션 제목 (성적, 메모 등) ===== */
 .section-title {
   display: flex;
   align-items: center;
@@ -362,75 +390,85 @@ button {
 
 .section-title h3 {
   display: inline-block;
-  padding: 5px 12px;
-  background: #ff00aa;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: var(--primary);
   color: #ffffff;
-  text-shadow: 2px 2px 0 #111111;
-  transform: rotate(-1deg);
+  font-size: 15px;
+  font-weight: 600;
+  text-shadow: none;
+  transform: none;
 }
 
+/* ===== 성적 테이블 ===== */
 .grade-table {
   width: 100%;
   border-collapse: collapse;
   overflow: hidden;
-  border: 5px ridge #111111;
-  border-radius: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
   background: #ffffff;
-  box-shadow: 6px 6px 0 #00aaff;
+  box-shadow: none;
 }
 
 .grade-table th,
 .grade-table td {
-  padding: 12px;
-  border: 3px solid #111111;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
   text-align: left;
   vertical-align: top;
+  font-size: 14px;
 }
 
 .grade-table th {
   width: 46%;
-  background: #00ff00;
-  color: #001eff;
+  background: #f8fafc;
+  color: var(--ink);
+  font-weight: 600;
 }
 
 .grade-table td {
-  background: #fff200;
-  color: #d10000;
-  font-weight: 900;
+  background: #ffffff;
+  color: var(--ink);
+  font-weight: 500;
 }
 
 .grade-table tr:nth-child(even) th {
-  background: #ff8ad8;
+  background: #f0f4f8;
 }
 
 .grade-table tr:nth-child(even) td {
-  background: #eaffff;
+  background: #fafbfc;
 }
 
+/* ===== 메모 리스트 ===== */
 .memo-list {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .memo-list li {
-  border: 4px dotted #001eff;
-  border-left: 12px solid var(--amber);
-  border-radius: 0 18px 3px 0;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--primary);
+  border-radius: 10px;
   background: #ffffff;
-  color: #5b008e;
-  font-weight: 800;
-  padding: 12px 14px;
-  box-shadow: 5px 5px 0 #fff200;
+  color: var(--ink);
+  font-weight: 400;
+  font-size: 14px;
+  padding: 12px 16px;
+  line-height: 1.6;
+  box-shadow: none;
 }
 
 .memo-list li:nth-child(2n) {
-  background: #f8c4ff;
-  border-color: #00ff00;
+  background: #f8fafc;
+  border-left-color: var(--teal);
 }
 
+/* ===== 관리자 그리드 (학생 카드 3열) ===== */
 .admin-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -441,20 +479,27 @@ button {
 .student-card {
   overflow: hidden;
   background: #ffffff;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* 삐뚤어진 카드 정렬 */
 .student-card:nth-child(1) {
-  transform: rotate(-1deg);
+  transform: none;
 }
 
 .student-card:nth-child(2) {
-  transform: rotate(1.2deg);
-  background: #c6ff00;
+  transform: none;
+  background: #ffffff;
 }
 
 .student-card:nth-child(3) {
-  transform: rotate(-0.4deg);
-  background: #ff8ad8;
+  transform: none;
+  background: #ffffff;
+}
+
+.student-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(74, 108, 247, 0.15);
 }
 
 .student-card .student-photo {
@@ -466,25 +511,29 @@ button {
 }
 
 .student-card h3 {
-  color: #ff0000;
-  font-size: 24px;
-  text-shadow: 2px 2px 0 #fff200;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 700;
+  text-shadow: none;
 }
 
+/* ===== 축소형 테이블 (관리자 카드 안) ===== */
 .compact-table {
   margin-top: 14px;
 }
 
 .compact-table th,
 .compact-table td {
-  padding: 9px;
-  font-size: 14px;
+  padding: 8px 10px;
+  font-size: 13px;
 }
 
+/* ===== 숨김 클래스 ===== */
 .hidden {
   display: none !important;
 }
 
+/* ===== 반응형: 태블릿 이하 ===== */
 @media (max-width: 860px) {
   .login-layout,
   .student-layout,
@@ -503,6 +552,7 @@ button {
   }
 }
 
+/* ===== 반응형: 모바일 ===== */
 @media (max-width: 560px) {
   .topbar {
     align-items: flex-start;
@@ -514,10 +564,9 @@ button {
     padding: 22px;
   }
 
+  /* HOT 뱃지 이미 제거됨 */
   .intro-panel::before {
-    width: 76px;
-    height: 76px;
-    font-size: 25px;
+    display: none;
   }
 
   .view-header {
